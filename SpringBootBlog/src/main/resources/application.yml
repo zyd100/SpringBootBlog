@@ -17,3 +17,4 @@ pagehelper:
   page-size-zero: true
   support-methods-arguments: true
   params: count=countSql
+logging:  level:    com.zyd.blog.mapper: debug  
