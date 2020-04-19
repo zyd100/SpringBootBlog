@@ -6,6 +6,10 @@
 
 https://github.com/lihengming/spring-boot-api-project-seed
 
+## 2020年4月19日
+
+添加aop日志切面
+
 ## 2020年4月18日
 
 添加Spring Security支持
