@@ -6,6 +6,14 @@ public class Comment {
 private String content;
 private LocalDateTime createdTime;
 private String ip;
+private boolean isAuthor;
+
+public boolean isAuthor() {
+  return isAuthor;
+}
+public void setAuthor(boolean isAuthor) {
+  this.isAuthor = isAuthor;
+}
 public String getContent() {
   return content;
 }
@@ -26,7 +34,8 @@ public void setIp(String ip) {
 }
 @Override
 public String toString() {
-  return "Comment [content=" + content + ", createdTime=" + createdTime + ", ip=" + ip + "]";
+  return "Comment [content=" + content + ", createdTime=" + createdTime + ", ip=" + ip
+      + ", isAuthor=" + isAuthor + "]";
 }
 
 }
