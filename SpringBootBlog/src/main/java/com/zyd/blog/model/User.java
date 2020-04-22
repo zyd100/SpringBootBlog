@@ -18,9 +18,9 @@ public class User implements UserDetails{
 
     private String username;
 
-    private String email;
-
     private String password;
+
+    private String role;
 
     @Column(name = "create_time")
     private Date createTime;
@@ -57,20 +57,6 @@ public class User implements UserDetails{
     }
 
     /**
-     * @return email
-     */
-    public String getEmail() {
-        return email;
-    }
-
-    /**
-     * @param email
-     */
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    /**
      * @return password
      */
     public String getPassword() {
@@ -82,6 +68,20 @@ public class User implements UserDetails{
      */
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    /**
+     * @return role
+     */
+    public String getRole() {
+        return role;
+    }
+
+    /**
+     * @param role
+     */
+    public void setRole(String role) {
+        this.role = role;
     }
 
     /**
@@ -120,8 +120,8 @@ public class User implements UserDetails{
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
         sb.append(", username=").append(username);
-        sb.append(", email=").append(email);
         sb.append(", password=").append(password);
+        sb.append(", role=").append(role);
         sb.append(", createTime=").append(createTime);
         sb.append(", lastLoginTime=").append(lastLoginTime);
         sb.append("]");
@@ -131,7 +131,7 @@ public class User implements UserDetails{
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
       // TODO Auto-generated method stub
-      return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
+      return Arrays.asList(new SimpleGrantedAuthority(role));
     }
 
     @Override

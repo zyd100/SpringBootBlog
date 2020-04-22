@@ -1,6 +1,5 @@
 package com.zyd.blog.mapper;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +13,9 @@ public class UserMapperTest {
   @Autowired
   private UserMapper userMapper;
 
-  @Test@Disabled
+  @Test
   public void test() {
-    System.out.println(userMapper.selectAll().size());
+    System.out.println(userMapper.selectAll().toString());
   }
   
 }

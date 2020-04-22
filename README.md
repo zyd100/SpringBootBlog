@@ -6,6 +6,12 @@
 
 https://github.com/lihengming/spring-boot-api-project-seed
 
+## 2020年4月22日
+
+修改数据库表
+
+完成文章上传demo
+
 ## 2020年4月21日
 
 新增MongoDb支持

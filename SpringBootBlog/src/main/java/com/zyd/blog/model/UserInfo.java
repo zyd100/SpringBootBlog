@@ -1,61 +1,140 @@
 package com.zyd.blog.model;
 
-import javax.persistence.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import java.util.Date;
+import javax.persistence.*;
 
-@Document(collation = "userInfo")
+@Table(name = "user_info")
 public class UserInfo {
-  @Id
-  private String id;
-  private String name;
-  private String email;
-  private String introduction;
-  private String position;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-  public String getId() {
-    return id;
-  }
+    @Column(name = "user_id")
+    private String userId;
 
-  public void setId(String id) {
-    this.id = id;
-  }
+    private String email;
 
-  public String getName() {
-    return name;
-  }
+    private String name;
 
-  public void setName(String name) {
-    this.name = name;
-  }
+    private String introdutcion;
 
-  public String getEmail() {
-    return email;
-  }
+    private String position;
 
-  public void setEmail(String email) {
-    this.email = email;
-  }
+    @Column(name = "create_time")
+    private Date createTime;
 
-  public String getIntroduction() {
-    return introduction;
-  }
+    /**
+     * @return id
+     */
+    public Integer getId() {
+        return id;
+    }
 
-  public void setIntroduction(String introduction) {
-    this.introduction = introduction;
-  }
+    /**
+     * @param id
+     */
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-  public String getPosition() {
-    return position;
-  }
+    /**
+     * @return user_id
+     */
+    public String getUserId() {
+        return userId;
+    }
 
-  public void setPosition(String position) {
-    this.position = position;
-  }
+    /**
+     * @param userId
+     */
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
-  @Override
-  public String toString() {
-    return "UserInfo [id=" + id + ", name=" + name + ", email=" + email + ", introduction="
-        + introduction + ", position=" + position + "]";
-  }
+    /**
+     * @return email
+     */
+    public String getEmail() {
+        return email;
+    }
 
+    /**
+     * @param email
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     * @return name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @param name
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * @return introdutcion
+     */
+    public String getIntrodutcion() {
+        return introdutcion;
+    }
+
+    /**
+     * @param introdutcion
+     */
+    public void setIntrodutcion(String introdutcion) {
+        this.introdutcion = introdutcion;
+    }
+
+    /**
+     * @return position
+     */
+    public String getPosition() {
+        return position;
+    }
+
+    /**
+     * @param position
+     */
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    /**
+     * @return create_time
+     */
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    /**
+     * @param createTime
+     */
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", id=").append(id);
+        sb.append(", userId=").append(userId);
+        sb.append(", email=").append(email);
+        sb.append(", name=").append(name);
+        sb.append(", introdutcion=").append(introdutcion);
+        sb.append(", position=").append(position);
+        sb.append(", createTime=").append(createTime);
+        sb.append("]");
+        return sb.toString();
+    }
 }
