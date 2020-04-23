@@ -15,4 +15,9 @@ public class ResultFactory {
     return new Result<>().setCode(ResultEnum.FAIL.getStatusCode())
         .setMessage(ResultEnum.FAIL.getStatusInfo());
   }
+
+  public static <T> Result<T> generateResult(T model, ResultEnum resultEnum) {
+    return new Result<T>().setData(model).setCode(resultEnum.getStatusCode())
+        .setMessage(resultEnum.getStatusInfo());
+  }
 }

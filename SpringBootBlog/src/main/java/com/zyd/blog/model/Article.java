@@ -1,6 +1,6 @@
 package com.zyd.blog.model;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
@@ -25,10 +25,10 @@ public class Article {
     private String watch;
 
     @Column(name = "created_time")
-    private Date createdTime;
+    private LocalDateTime createdTime;
 
     @Column(name = "update_time")
-    private Date updateTime;
+    private LocalDateTime updateTime;
 
     /**
      * @return id
@@ -145,28 +145,28 @@ public class Article {
     /**
      * @return created_time
      */
-    public Date getCreatedTime() {
+    public LocalDateTime getCreatedTime() {
         return createdTime;
     }
 
     /**
      * @param createdTime
      */
-    public void setCreatedTime(Date createdTime) {
+    public void setCreatedTime(LocalDateTime createdTime) {
         this.createdTime = createdTime;
     }
 
     /**
      * @return update_time
      */
-    public Date getUpdateTime() {
+    public LocalDateTime getUpdateTime() {
         return updateTime;
     }
 
     /**
      * @param updateTime
      */
-    public void setUpdateTime(Date updateTime) {
+    public void setUpdateTime(LocalDateTime updateTime) {
         this.updateTime = updateTime;
     }
 

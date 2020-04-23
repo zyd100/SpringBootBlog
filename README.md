@@ -6,6 +6,12 @@
 
 https://github.com/lihengming/spring-boot-api-project-seed
 
+## 2020年4月23日
+
+完成基础业务层以及控制层
+
+新增Swagger2支持
+
 ## 2020年4月22日
 
 修改数据库表
