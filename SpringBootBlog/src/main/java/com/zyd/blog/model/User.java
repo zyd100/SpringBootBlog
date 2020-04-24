@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,10 +15,12 @@ public class User implements UserDetails{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Size(min = 5,max = 12,message = "用户id太短或太长")
     private String id;
 
     private String username;
-
+    
+    @Size(min = 8,max = 12,message = "密码长度太短或太长")
     private String password;
 
     private String role;
@@ -46,7 +49,7 @@ public class User implements UserDetails{
      * @return username
      */
     public String getUsername() {
-        return username;
+    return username;
     }
 
     /**

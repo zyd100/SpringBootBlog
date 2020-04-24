@@ -1,17 +1,20 @@
 package com.zyd.blog.web;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import com.zyd.blog.dto.Result;
 import com.zyd.blog.model.User;
 import com.zyd.blog.service.UserService;
+import com.zyd.blog.util.ResultFactory;
 
-@Controller
-@RequestMapping("/register")
+@RestController
+@RequestMapping("/users")
 public class UserController {
 
   @Resource
@@ -19,15 +22,12 @@ public class UserController {
   @Autowired
   private PasswordEncoder encoder;
   
-  @GetMapping
-  public String registerForm() {
-    return "registration";
-  }
+  
   @PostMapping
-  public String register(User user) {
-    user.setUsername("abctest");
+  public Result<Object> register(@RequestBody @Valid User user) {
     user.setPassword(encoder.encode(user.getPassword()));
     userService.save(user);
-    return"redirect:/login";
+    user.setPassword(null);
+    return ResultFactory.generateSuccessResult(user);
   }
 }

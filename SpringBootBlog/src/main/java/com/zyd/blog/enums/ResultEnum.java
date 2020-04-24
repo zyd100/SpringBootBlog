@@ -3,7 +3,8 @@ package com.zyd.blog.enums;
 public enum ResultEnum {
 
   OK(200,"OK"),
-  FAIL(400,"FAIL");
+  FAIL(400,"FAIL"),
+  DENIED(403,"denied");
   private String statusInfo;
   private int statusCode;
   private ResultEnum(int code,String Info) {

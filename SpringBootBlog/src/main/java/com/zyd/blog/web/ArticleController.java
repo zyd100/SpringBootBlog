@@ -2,6 +2,7 @@ package com.zyd.blog.web;
 
 import java.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,20 +28,22 @@ public class ArticleController {
 
 
   @PostMapping
+  @PreAuthorize("hasRole('ROLE_ADMIN')")
   public Result<Article> saveArticle(@RequestBody Article article) {
     article.setCreatedTime(LocalDateTime.now());
     article.setSummary(StrUtil.sub(article.getContent(), 0, 100));
     articleService.save(article);
     return ResultFactory.generateSuccessResult(article);
   }
-  
+
   @GetMapping("/{id}")
   public Result<ArticleDto> getArticle(@PathVariable int id) {
     return ResultFactory.generateSuccessResult(articleService.findById(id));
   }
 
   @GetMapping("/summary")
-  public Result<PageInfo<Article>>getArticleSummary(int pageNum,int pageSize){
+  public Result<PageInfo<Article>> getArticleSummary(int pageNum, int pageSize) {
     return ResultFactory.generateSuccessResult(articleService.findAllSummary(pageNum, pageSize));
   }
+
 }

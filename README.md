@@ -6,6 +6,14 @@
 
 https://github.com/lihengming/spring-boot-api-project-seed
 
+## 2020年4月24日
+
+项目改为纯后端项目
+
+登录登出新增json格式返回
+
+更新权限管理相关配置
+
 ## 2020年4月23日
 
 完成基础业务层以及控制层
