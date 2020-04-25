@@ -6,6 +6,12 @@
 
 https://github.com/lihengming/spring-boot-api-project-seed
 
+## 2020年4月25日
+
+新增全局异常统一管理
+更新权限配置
+ 添加跨域支持
+
 ## 2020年4月24日
 
 项目改为纯后端项目
