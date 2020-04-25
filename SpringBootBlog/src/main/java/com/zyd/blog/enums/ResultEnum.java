@@ -4,7 +4,9 @@ public enum ResultEnum {
 
   OK(200,"OK"),
   FAIL(400,"FAIL"),
-  DENIED(403,"denied");
+  DENIED(403,"denied"),
+  NOT_FOUND(404,"not found"),
+  INTERNAL_SERVER_ERROR(500,"internal server error");
   private String statusInfo;
   private int statusCode;
   private ResultEnum(int code,String Info) {

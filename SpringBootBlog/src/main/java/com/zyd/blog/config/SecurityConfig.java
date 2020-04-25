@@ -68,14 +68,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             /*Map<String,Object> map = new HashMap<String,Object>();
             map.put("code",403);
             map.put("message","未登录");*/
-            out.write(JSONUtil.toJsonStr(ResultFactory.generateResult(null, ResultEnum.DENIED)));
+            out.write(JSONUtil.toJsonStr(ResultFactory.generateResult(null, ResultEnum.DENIED).setMessage("未登录")));
             out.flush();
             out.close();
         })
         
         .and()
         .authorizeRequests()
-        .anyRequest().authenticated() //必须授权才能返回
+        .anyRequest()
+        .permitAll() //所有请求都可以访问
+        //.authenticated() //必须授权才能返回
         
         .and()
         .formLogin() //使用自带的登录
@@ -131,8 +133,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             out.close();
         })
         .permitAll();
-        //开启跨域访问
-        http.cors().disable();
         //开启模拟请求，比如API POST测试工具的测试，不开启时，API POST为报403错误
         http.csrf().disable();
   }

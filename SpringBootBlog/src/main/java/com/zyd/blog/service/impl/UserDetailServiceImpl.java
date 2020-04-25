@@ -1,6 +1,7 @@
 package com.zyd.blog.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -22,6 +23,9 @@ public class UserDetailServiceImpl implements UserDetailsService{
      throw new UsernameNotFoundException("User:"+id+" not found");
    }
   
-    return user;
+    //return user;
+   return new org.springframework.security.core.userdetails.User(user.getId(), user.getPassword(), user.isEnabled(),
+       user.isAccountNonExpired(), user.isCredentialsNonExpired(),
+       user.isAccountNonLocked(), AuthorityUtils.commaSeparatedStringToAuthorityList(user.getRole()));
   }
 }

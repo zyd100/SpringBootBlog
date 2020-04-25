@@ -45,5 +45,5 @@ public class ArticleController {
   public Result<PageInfo<Article>> getArticleSummary(int pageNum, int pageSize) {
     return ResultFactory.generateSuccessResult(articleService.findAllSummary(pageNum, pageSize));
   }
-
+  
 }
