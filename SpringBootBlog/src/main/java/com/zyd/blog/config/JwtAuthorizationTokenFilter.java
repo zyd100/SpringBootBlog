@@ -27,7 +27,10 @@ public class JwtAuthorizationTokenFilter extends OncePerRequestFilter {
   private JwtUtil jwtUtil;
   @Autowired
   private JwtProps jwtProps;
+  
   private Logger logger=LoggerFactory.getLogger(getClass());
+  
+  private static final String TOKENPREFIX="Bearer ";
   @Override
   protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
       FilterChain filterChain) throws ServletException, IOException {
@@ -35,9 +38,9 @@ public class JwtAuthorizationTokenFilter extends OncePerRequestFilter {
     final String requestHeader = request.getHeader(jwtProps.getTokenHeader());
     String username = null;
     String authToken = null;
-    if (requestHeader != null && requestHeader.startsWith("Bearer ")) {
-      
-      authToken = requestHeader.substring(jwtProps.getTokenHeader().length());
+    if (requestHeader != null && requestHeader.startsWith(TOKENPREFIX)) {
+     // authToken =requestHeader.split(" ")[1];
+          authToken=requestHeader.substring(TOKENPREFIX.length());
       try {
         username = jwtUtil.getUsernameFromToken(authToken);
       } catch (ExpiredJwtException e) {

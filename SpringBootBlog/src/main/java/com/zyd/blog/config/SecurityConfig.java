@@ -40,8 +40,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Override
   public void configure(WebSecurity web) throws Exception {
-    
-    web.ignoring().antMatchers(HttpMethod.OPTIONS,"/**");
+
+    web.ignoring().antMatchers(HttpMethod.OPTIONS, "/**");
   }
 
   @Override
@@ -57,33 +57,43 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
      */
 
     http
-    
-    .httpBasic()
-    //未登录时，进行json格式的提示
-        .authenticationEntryPoint((request,response,authException) -> {
-            response.setContentType("application/json;charset=utf-8");
-            response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-            PrintWriter out = response.getWriter();
-            /*Map<String,Object> map = new HashMap<String,Object>();
-            map.put("code",403);
-            map.put("message","未登录");*/
-            out.write(JSONUtil.toJsonStr(ResultFactory.generateResult(null, ResultEnum.DENIED).setMessage("未登录")));
-            out.flush();
-            out.close();
+
+        .httpBasic()
+        // 未登录时，进行json格式的提示
+        .authenticationEntryPoint((request, response, authException) -> {
+          response.setContentType("application/json;charset=utf-8");
+          response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+          PrintWriter out = response.getWriter();
+          /*
+           * Map<String,Object> map = new HashMap<String,Object>(); map.put("code",403);
+           * map.put("message","未登录");
+           */
+          out.write(JSONUtil
+              .toJsonStr(ResultFactory.generateResult(null, ResultEnum.DENIED).setMessage("未登录")));
+          out.flush();
+          out.close();
         })
         .and()
         .authorizeRequests()
-        //放行登录url
+        .antMatchers(HttpMethod.GET, // 允许对于网站静态资源的无授权访问
+            "/", "/*.html",
+            "/favicon.ico",
+            "/**/*.html",
+            "/**/*.css",
+            "/**/*.js",
+            "/swagger-resources/**", "/v2/api-docs/**")
+        .permitAll()
+        // 放行登录url
         .antMatchers("/login")
         .permitAll()
         .anyRequest()
-        //.permitAll() //所有请求都可以访问
-        .authenticated() //其余请求必须授权才能返回
-        ;
-        //取消csrf
-        http.csrf().disable()
-        
+        // .permitAll() //所有请求都可以访问
+        .authenticated() // 其余请求必须授权才能返回
+    ;
+    // 取消csrf
+    http.csrf().disable()
+
         .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.addFilterBefore(jwtAuthorizationTokenFilter, UsernamePasswordAuthenticationFilter.class);
+    http.addFilterBefore(jwtAuthorizationTokenFilter, UsernamePasswordAuthenticationFilter.class);
   }
 }
