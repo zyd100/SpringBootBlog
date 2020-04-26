@@ -6,6 +6,10 @@
 
 https://github.com/lihengming/spring-boot-api-project-seed
 
+## 2020年4月26日
+
+Spring Security整合JWT
+
 ## 2020年4月25日
 
 新增全局异常统一管理

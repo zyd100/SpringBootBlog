@@ -15,11 +15,19 @@ spring:
    #pagehelper     data:    mongodb:      host: localhost
       port: 27017
       database: springbootblog
+  #date format    
+  jackson:    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8    
 pagehelper:
   helper-dialect: mysql
   reasonable: true
   page-size-zero: true
   support-methods-arguments: true
   params: count=countSql
+  #jwt
+jwt:
+  secret: blog
+  expiration: 7200000
+  tokenHeader: Authorization
   #log
 logging:  level:    com.zyd.blog.mapper: trace  
