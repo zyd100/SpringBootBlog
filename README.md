@@ -2,6 +2,10 @@
 
  
 
+## 开发目标
+
+ [开发目标.md](开发目标.md) 
+
 ## 骨架参考
 
 https://github.com/lihengming/spring-boot-api-project-seed
