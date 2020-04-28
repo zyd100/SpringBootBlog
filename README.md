@@ -6,6 +6,16 @@
 
 https://github.com/lihengming/spring-boot-api-project-seed
 
+## 2020年4月28日
+
+ 删除原项目前端代码
+
+## 总体目标：实现前后端分离项目
+
+下一阶段开发目标：
+
+1. 着手设计前端项目以及前端接口
+
 ## 2020年4月26日
 
 Spring Security整合JWT
