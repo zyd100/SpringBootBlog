@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,18 +15,20 @@ import com.zyd.blog.dto.Result;
 import com.zyd.blog.model.UserInfo;
 import com.zyd.blog.service.UserInfoService;
 import com.zyd.blog.util.ResultFactory;
+import tk.mybatis.mapper.entity.Condition;
 
 @RestController
 @RequestMapping("/userInfos")
 public class UserInfoController {
-  
   @Autowired
   private UserInfoService userInfoService;
   
-  @GetMapping
-  public Result<Object>getInfo(){
-    List<UserInfo>infos=userInfoService.findAll();
-    return ResultFactory.generateSuccessResult(infos.size()>0?infos.get(0):null);
+  @GetMapping("/{userId}")
+  public Result<Object>getInfo(@PathVariable("userId") String userId){
+    Condition condition=new Condition(UserInfo.class);
+    condition.createCriteria().andEqualTo("userId",userId);
+    List<UserInfo> resultInfos=userInfoService.findByCondition(condition);
+    return ResultFactory.generateSuccessResult(resultInfos.size()>0?resultInfos.get(0):null);
   }
 
   @PostMapping

@@ -6,9 +6,17 @@
 
  [开发目标.md](开发目标.md) 
 
+## 前端项目
+
+[blog-admin](https://github.com/zyd100/Vue-SpringbootBlog-admin)
+
 ## 骨架参考
 
 https://github.com/lihengming/spring-boot-api-project-seed
+
+## 2020年4月30日
+
+完成前端项目后台管理-个人信息模块
 
 ## 2020年4月28日
 
