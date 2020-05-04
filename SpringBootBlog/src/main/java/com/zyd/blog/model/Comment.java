@@ -1,6 +1,6 @@
 package com.zyd.blog.model;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import javax.persistence.*;
 
 public class Comment {
@@ -11,9 +11,9 @@ public class Comment {
     private String content;
 
     @Column(name = "created_time")
-    private Date createdTime;
+    private LocalDateTime createdTime;
 
-    private String type;
+    private Integer type;
 
     @Column(name = "user_name")
     private String userName;
@@ -52,28 +52,28 @@ public class Comment {
     /**
      * @return created_time
      */
-    public Date getCreatedTime() {
+    public LocalDateTime getCreatedTime() {
         return createdTime;
     }
 
     /**
      * @param createdTime
      */
-    public void setCreatedTime(Date createdTime) {
+    public void setCreatedTime(LocalDateTime createdTime) {
         this.createdTime = createdTime;
     }
 
     /**
      * @return type
      */
-    public String getType() {
+    public Integer getType() {
         return type;
     }
 
     /**
      * @param type
      */
-    public void setType(String type) {
+    public void setType(Integer type) {
         this.type = type;
     }
 

@@ -84,7 +84,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/swagger-resources/**", "/v2/api-docs/**")
         .permitAll()
         // 放行登录url
-        .antMatchers("/login","/userInfos/**")
+        .antMatchers("/login","/userInfos/**","/articles/**")
         .permitAll()
         .anyRequest()
         // .permitAll() //所有请求都可以访问

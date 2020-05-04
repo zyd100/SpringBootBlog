@@ -1,6 +1,6 @@
 package com.zyd.blog.model;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import javax.persistence.*;
 
 @Table(name = "user_info")
@@ -20,8 +20,10 @@ public class UserInfo {
 
     private String position;
 
+    private String image;
+
     @Column(name = "create_time")
-    private Date createTime;
+    private LocalDateTime createTime;
 
     /**
      * @return id
@@ -108,16 +110,30 @@ public class UserInfo {
     }
 
     /**
+     * @return image
+     */
+    public String getImage() {
+        return image;
+    }
+
+    /**
+     * @param image
+     */
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    /**
      * @return create_time
      */
-    public Date getCreateTime() {
+    public LocalDateTime getCreateTime() {
         return createTime;
     }
 
     /**
      * @param createTime
      */
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(LocalDateTime createTime) {
         this.createTime = createTime;
     }
 
@@ -133,6 +149,7 @@ public class UserInfo {
         sb.append(", name=").append(name);
         sb.append(", introdutcion=").append(introdutcion);
         sb.append(", position=").append(position);
+        sb.append(", image=").append(image);
         sb.append(", createTime=").append(createTime);
         sb.append("]");
         return sb.toString();

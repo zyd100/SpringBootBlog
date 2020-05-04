@@ -52,9 +52,12 @@ public class ArticleController {
     return ResultFactory.generateSuccessResult(articleService.findById(id));
   }
 
-  @GetMapping("/summary")
-  public Result<PageInfo<Article>> getArticleSummary(int pageNum, int pageSize) {
+  @GetMapping("/summary/{pageNum}/{pageSize}")
+  public Result<PageInfo<Article>> getArticleSummary(@PathVariable("pageNum")int pageNum, @PathVariable("pageSize")int pageSize) {
     return ResultFactory.generateSuccessResult(articleService.findAllSummary(pageNum, pageSize));
   }
-
+  @GetMapping("/draft/summary/{pageNum}/{pageSize}")
+  public Result<PageInfo<Article>> getDraftSummary(@PathVariable("pageNum")int pageNum, @PathVariable("pageSize")int pageSize) {
+    return ResultFactory.generateSuccessResult(articleService.findDraftAllSummary(pageNum, pageSize));
+  }
 }

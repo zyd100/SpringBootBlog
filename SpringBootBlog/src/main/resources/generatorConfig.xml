@@ -31,7 +31,23 @@
 			targetPackage="com.zyd.blog.mapper" targetProject="src/main/java"
 			type="XMLMAPPER" />
 
-		<table tableName="user">
+		<table tableName="user_info">
+			<generatedKey column="id" sqlStatement="Mysql"
+				identity="true" />
+		</table>
+		<table tableName="comment">
+			<generatedKey column="id" sqlStatement="Mysql"
+				identity="true" />
+		</table>
+				<table tableName="category">
+			<generatedKey column="id" sqlStatement="Mysql"
+				identity="true" />
+		</table>
+			<table tableName="article_category">
+			<generatedKey column="id" sqlStatement="Mysql"
+				identity="true" />
+		</table>
+		<table tableName="article">
 			<generatedKey column="id" sqlStatement="Mysql"
 				identity="true" />
 		</table>

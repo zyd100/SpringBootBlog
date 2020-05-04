@@ -2,7 +2,6 @@ package com.zyd.blog.model;
 
 import java.time.LocalDateTime;
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 
 public class Article {
     @Id
@@ -10,15 +9,17 @@ public class Article {
     private Integer id;
 
     private String author;
-    
+
     @Column(name = "user_id")
     private String userId;
-    @NotBlank
+
     private String title;
-    @NotBlank
+
     private String content;
-    
+
     private String summary;
+
+    private Integer type;
 
     private String star;
 
@@ -115,6 +116,20 @@ public class Article {
     }
 
     /**
+     * @return type
+     */
+    public Integer getType() {
+        return type;
+    }
+
+    /**
+     * @param type
+     */
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
+    /**
      * @return star
      */
     public String getStar() {
@@ -182,6 +197,7 @@ public class Article {
         sb.append(", title=").append(title);
         sb.append(", content=").append(content);
         sb.append(", summary=").append(summary);
+        sb.append(", type=").append(type);
         sb.append(", star=").append(star);
         sb.append(", watch=").append(watch);
         sb.append(", createdTime=").append(createdTime);

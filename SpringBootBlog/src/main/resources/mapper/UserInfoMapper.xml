@@ -11,6 +11,7 @@
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="introdutcion" jdbcType="VARCHAR" property="introdutcion" />
     <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="image" jdbcType="VARCHAR" property="image" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
 </mapper>

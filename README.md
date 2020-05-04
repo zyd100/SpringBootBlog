@@ -14,6 +14,18 @@
 
 https://github.com/lihengming/spring-boot-api-project-seed
 
+## 2020年5月4日
+
+新增**article_category** **category** 表
+
+原**article**表新增type属性
+
+原**user_info**表新增image属性
+
+更新各数据库表相应实体类 Dao接口 Service层接口以及接口实例
+
+对dto对象的创建新增**DtoGenerator**类作统一管理
+
 ## 2020年4月30日
 
 完成前端项目后台管理-个人信息模块

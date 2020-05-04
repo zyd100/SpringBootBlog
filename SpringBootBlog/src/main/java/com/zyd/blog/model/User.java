@@ -1,8 +1,8 @@
 package com.zyd.blog.model;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Date;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import org.springframework.security.core.GrantedAuthority;
@@ -26,10 +26,10 @@ public class User implements UserDetails{
     private String role;
 
     @Column(name = "create_time")
-    private Date createTime;
+    private LocalDateTime createTime;
 
     @Column(name = "last_login_time")
-    private Date lastLoginTime;
+    private LocalDateTime lastLoginTime;
 
     /**
      * @return id
@@ -90,28 +90,28 @@ public class User implements UserDetails{
     /**
      * @return create_time
      */
-    public Date getCreateTime() {
+    public LocalDateTime getCreateTime() {
         return createTime;
     }
 
     /**
      * @param createTime
      */
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(LocalDateTime createTime) {
         this.createTime = createTime;
     }
 
     /**
      * @return last_login_time
      */
-    public Date getLastLoginTime() {
+    public LocalDateTime getLastLoginTime() {
         return lastLoginTime;
     }
 
     /**
      * @param lastLoginTime
      */
-    public void setLastLoginTime(Date lastLoginTime) {
+    public void setLastLoginTime(LocalDateTime lastLoginTime) {
         this.lastLoginTime = lastLoginTime;
     }
 

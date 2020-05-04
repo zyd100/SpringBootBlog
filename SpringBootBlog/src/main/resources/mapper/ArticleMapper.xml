@@ -11,6 +11,7 @@
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="content" jdbcType="VARCHAR" property="content" />
     <result column="summary" jdbcType="VARCHAR" property="summary" />
+    <result column="type" jdbcType="INTEGER" property="type" />
     <result column="star" jdbcType="VARCHAR" property="star" />
     <result column="watch" jdbcType="VARCHAR" property="watch" />
     <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />

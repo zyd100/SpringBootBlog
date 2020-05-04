@@ -2,10 +2,12 @@ package com.zyd.blog.service.impl;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import com.zyd.blog.model.Statistic;
 import com.zyd.blog.repository.StatisticRepository;
 import com.zyd.blog.service.StatisticService;
 
+@Service
 public class StatisticServiceImpl implements StatisticService {
 
   @Autowired
