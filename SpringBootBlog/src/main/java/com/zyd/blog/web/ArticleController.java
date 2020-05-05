@@ -3,6 +3,7 @@ package com.zyd.blog.web;
 import java.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,7 +38,14 @@ public class ArticleController {
     articleService.save(article);
     return ResultFactory.generateSuccessResult(article);
   }
-
+  
+  @DeleteMapping("/{id}")
+  @PreAuthorize("hasRole('ROLE_ADMIN')")
+  public Result<Object> deleteArticle(@PathVariable("id")Integer id){
+    articleService.deleteById(id);
+    return ResultFactory.generateSuccessResult("删除成功");
+  }
+  
   @PutMapping
   @PreAuthorize("hasRole('ROLE_ADMIN')")
   public Result<Article> updateArticle(@RequestBody Article article) {
@@ -56,8 +64,11 @@ public class ArticleController {
   public Result<PageInfo<Article>> getArticleSummary(@PathVariable("pageNum")int pageNum, @PathVariable("pageSize")int pageSize) {
     return ResultFactory.generateSuccessResult(articleService.findAllSummary(pageNum, pageSize));
   }
+  
+  @PreAuthorize("hasRole('ROLE_ADMIN')")
   @GetMapping("/draft/summary/{pageNum}/{pageSize}")
   public Result<PageInfo<Article>> getDraftSummary(@PathVariable("pageNum")int pageNum, @PathVariable("pageSize")int pageSize) {
     return ResultFactory.generateSuccessResult(articleService.findDraftAllSummary(pageNum, pageSize));
   }
+ 
 }

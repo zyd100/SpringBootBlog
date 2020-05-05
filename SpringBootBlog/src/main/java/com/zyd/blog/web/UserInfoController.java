@@ -18,7 +18,7 @@ import com.zyd.blog.util.ResultFactory;
 import tk.mybatis.mapper.entity.Condition;
 
 @RestController
-@RequestMapping("/userInfos")
+@RequestMapping(path="/userInfos",produces = {"application/json; charset=utf-8"})
 public class UserInfoController {
   @Autowired
   private UserInfoService userInfoService;

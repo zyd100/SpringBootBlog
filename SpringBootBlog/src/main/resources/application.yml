@@ -17,7 +17,9 @@ spring:
       database: springbootblog
   #date format    
   jackson:    date-format: yyyy-MM-dd HH:mm:ss
-    time-zone: GMT+8    
+    time-zone: GMT+8  
+  #文件上传      servlet:    multipart:      enabled: true
+      max-file-size: 10MB #限制单文件最大大小
 pagehelper:
   helper-dialect: mysql
   reasonable: true
@@ -29,5 +31,11 @@ jwt:
   secret: blog
   expiration: 7200000
   tokenHeader: Authorization
+  #minio
+minio:
+  endpoint: http://127.0.0.1:9000 #MinIO服务所在地址
+  bucketName: blog #存储桶名称
+  accessKey: minioadmin #访问的key
+  secretKey: minioadmin #访问的秘钥
   #log
 logging:  level:    com.zyd.blog.mapper: trace  

@@ -14,6 +14,12 @@
 
 https://github.com/lihengming/spring-boot-api-project-seed
 
+## 2020年5月5日
+
+整合Minio实现文件管理
+
+初步完成文件上传、删除模块
+
 ## 2020年5月4日
 
 新增**article_category** **category** 表

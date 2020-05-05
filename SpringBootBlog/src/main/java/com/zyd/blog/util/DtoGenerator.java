@@ -2,6 +2,7 @@ package com.zyd.blog.util;
 
 import java.util.List;
 import com.zyd.blog.dto.ArticleDto;
+import com.zyd.blog.dto.MinioDto;
 import com.zyd.blog.enums.ArticleEnum;
 import com.zyd.blog.model.Article;
 import com.zyd.blog.model.ArticleCategory;
@@ -17,5 +18,12 @@ public class DtoGenerator {
     ArticleEnum articleEnum=ArticleEnum.stateOf(article.getType());
     articleDto.setType(articleEnum);
     return articleDto;
+  }
+  public static MinioDto generateMinioDto(String fileName,String pathName,String url) {
+    MinioDto minioDto=new MinioDto();
+    minioDto.setFileName(fileName);
+    minioDto.setPathName(pathName);
+    minioDto.setUrl(url);
+    return minioDto;
   }
 }

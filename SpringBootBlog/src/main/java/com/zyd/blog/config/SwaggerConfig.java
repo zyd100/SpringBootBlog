@@ -40,6 +40,7 @@ public class SwaggerConfig {
   private List<SecurityContext> securityContexts() {
     List<SecurityContext> resultList = new ArrayList<>();
     resultList.add(getContextByPath("/articles/.*"));
+    resultList.add(getContextByPath("/minio/.*"));
     return resultList;
   }
 

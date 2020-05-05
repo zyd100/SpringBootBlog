@@ -1,24 +1,53 @@
-{
-	"properties": [
-		{
-			"name": "jwt",
-			"type": "java.lang.String",
-			"description": "jwt Ïà¹ØÉèÖÃ"
-		},
-		{
-			"name": "jwt.secret",
-			"type": "java.lang.String",
-			"description": "jwt token ÃÜÔ¿"
-		},
-		{
-			"name": "jwt.expiration",
-			"type": "java.lang.Long",
-			"description": "jwt token ¹ýÆÚÊ±¼ä"
-		},
-		{
-			"name": "jwt.tokenHeader",
-			"type": "java.lang.Long",
-			"description": "jwt token ÇëÇóÍ·"
-		}
-	]
-}
+{"properties": [
+  {
+    "name": "jwt",
+    "type": "java.lang.String",
+    "description": "jwt "
+  },
+  {
+    "name": "jwt.secret",
+    "type": "java.lang.String",
+    "description": "jwt token headerå¤´"
+  },
+  {
+    "name": "jwt.expiration",
+    "type": "java.lang.Long",
+    "description": "jwt token è¿‡æœŸæ—¶é—´"
+  },
+  {
+    "name": "jwt.tokenHeader",
+    "type": "java.lang.Long",
+    "description": "jwt token headerå¤´"
+  },
+  {
+    "name": "minio",
+    "type": "java.lang.String",
+    "description": "A description for 'minio'"
+  },
+  {
+    "name": "minio.secret",
+    "type": "java.lang.String",
+    "description": "A description for 'minio'"
+  },
+  {
+    "name": "minio.bucketName",
+    "type": "java.lang.String",
+    "description": "A description for 'minio'"
+  },
+  {
+    "name": "minio.accessKey",
+    "type": "java.lang.String",
+    "description": "A description for 'minio'"
+  },
+  {
+    "name": "minio.secretKey",
+    "type": "java.lang.String",
+    "description": "A description for 'minio'"
+  },
+  {
+    "name": "minio",
+    "type": "java.lang.String",
+    "description": "A description for 'minio'"
+  }
+  
+]}
