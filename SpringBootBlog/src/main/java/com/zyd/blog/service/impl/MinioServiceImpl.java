@@ -1,5 +1,6 @@
 package com.zyd.blog.service.impl;
 
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,5 +68,17 @@ public class MinioServiceImpl implements MinioService {
   private String generateObjectName(String fileName) {
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
     return simpleDateFormat.format(new Date()) + "/" + fileName;
+  }
+
+  @Override
+  public InputStream getFileInputStream(String objectName) {
+    try {
+      MinioClient minioClient = new MinioClient(minioProps.getEndPoint(), minioProps.getAccessKey(),
+          minioProps.getSecretKey());
+      return minioClient.getObject(minioProps.getBucketName(), objectName);
+    } catch (Exception e) {
+      ExceptionGenerator.generatorServiceException("获取文件流失败:" + e.getMessage());
+    }
+    return null;
   }
 }
