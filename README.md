@@ -14,6 +14,10 @@
 
 https://github.com/lihengming/spring-boot-api-project-seed
 
+## 2020年5月7日
+
+完成minio预览图片功能
+
 ## 2020年5月5日
 
 整合Minio实现文件管理
