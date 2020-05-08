@@ -16,6 +16,7 @@ import com.zyd.blog.dto.ArticleDto;
 import com.zyd.blog.dto.Result;
 import com.zyd.blog.model.Article;
 import com.zyd.blog.service.ArticleService;
+import com.zyd.blog.service.MinioService;
 import com.zyd.blog.util.ResultFactory;
 import cn.hutool.core.util.StrUtil;
 import io.swagger.annotations.Api;
@@ -28,8 +29,10 @@ public class ArticleController {
 
   @Autowired
   private ArticleService articleService;
-  
+  @Autowired
+  private MinioService minioService;
 
+  private static final String IMG_URL_PREFIX="http://localhost:8080/minio/view/";
   @PostMapping
   @PreAuthorize("hasRole('ROLE_ADMIN')")
   public Result<Article> saveArticle(@RequestBody Article article) {
@@ -42,6 +45,14 @@ public class ArticleController {
   @DeleteMapping("/{id}")
   @PreAuthorize("hasRole('ROLE_ADMIN')")
   public Result<Object> deleteArticle(@PathVariable("id")Integer id){
+    //删除文章图片
+   for(String path:StrUtil.subBetweenAll(articleService.findById(id).getContent(), "(", ")")) {
+     if(path.contains("minio/view")) {
+       String objectName=StrUtil.subSuf(path, IMG_URL_PREFIX.length());
+       minioService.delete(objectName);
+     }
+   }
+   //删除文章
     articleService.deleteById(id);
     return ResultFactory.generateSuccessResult("删除成功");
   }

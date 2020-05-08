@@ -4,13 +4,13 @@ public class MinioDto {
 
   private String fileName;
   private String url;
-  private String pathName;
+  private String objectName;
   
-  public String getPathName() {
-    return pathName;
+  public String getObjectName() {
+    return objectName;
   }
-  public void setPathName(String pathName) {
-    this.pathName = pathName;
+  public void setObjectName(String objectName) {
+    this.objectName = objectName;
   }
   public String getFileName() {
     return fileName;

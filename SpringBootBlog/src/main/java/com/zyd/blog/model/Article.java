@@ -15,10 +15,6 @@ public class Article {
 
     private String title;
 
-    private String content;
-
-    private String summary;
-
     private Integer type;
 
     private String star;
@@ -30,6 +26,10 @@ public class Article {
 
     @Column(name = "update_time")
     private LocalDateTime updateTime;
+
+    private String content;
+
+    private String summary;
 
     /**
      * @return id
@@ -85,34 +85,6 @@ public class Article {
      */
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    /**
-     * @return content
-     */
-    public String getContent() {
-        return content;
-    }
-
-    /**
-     * @param content
-     */
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    /**
-     * @return summary
-     */
-    public String getSummary() {
-        return summary;
-    }
-
-    /**
-     * @param summary
-     */
-    public void setSummary(String summary) {
-        this.summary = summary;
     }
 
     /**
@@ -185,6 +157,34 @@ public class Article {
         this.updateTime = updateTime;
     }
 
+    /**
+     * @return content
+     */
+    public String getContent() {
+        return content;
+    }
+
+    /**
+     * @param content
+     */
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    /**
+     * @return summary
+     */
+    public String getSummary() {
+        return summary;
+    }
+
+    /**
+     * @param summary
+     */
+    public void setSummary(String summary) {
+        this.summary = summary;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -195,13 +195,13 @@ public class Article {
         sb.append(", author=").append(author);
         sb.append(", userId=").append(userId);
         sb.append(", title=").append(title);
-        sb.append(", content=").append(content);
-        sb.append(", summary=").append(summary);
         sb.append(", type=").append(type);
         sb.append(", star=").append(star);
         sb.append(", watch=").append(watch);
         sb.append(", createdTime=").append(createdTime);
         sb.append(", updateTime=").append(updateTime);
+        sb.append(", content=").append(content);
+        sb.append(", summary=").append(summary);
         sb.append("]");
         return sb.toString();
     }

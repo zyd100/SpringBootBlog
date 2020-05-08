@@ -1,6 +1,5 @@
 package com.zyd.blog.web;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import javax.servlet.http.HttpServletRequest;
@@ -43,26 +42,22 @@ public class MinioController {
   }
   
   @GetMapping("/view/**")
-  public void view(HttpServletRequest request,HttpServletResponse response) {
-    String imgPath=extractPathFromPattern(request);
+  public void view(HttpServletRequest request, HttpServletResponse response) {
+    String imgPath = extractPathFromPattern(request);
 
-    try(InputStream inputStream=minioService.getFileInputStream(imgPath);
-        OutputStream outputStream=response.getOutputStream()
-        ) {
+    try (InputStream inputStream = minioService.getFileInputStream(imgPath);
+        OutputStream outputStream = response.getOutputStream()) {
       response.setContentType("image/jpeg;charset=utf-8");
       byte[] buf = new byte[1024];
       int len;
       while ((len = inputStream.read(buf)) > 0) {
-          outputStream.write(buf, 0, len);
+        outputStream.write(buf, 0, len);
       }
       response.flushBuffer();
-    }catch (IOException e) {
-      // TODO: handle exception
-    } 
-    catch (Exception e) {
+    } catch (Exception e) {
       ExceptionGenerator.generatorServiceException("预览图片失败");
     }
-    
+
   }
   
   private static String extractPathFromPattern(final HttpServletRequest request) {

@@ -22,7 +22,7 @@ public class DtoGenerator {
   public static MinioDto generateMinioDto(String fileName,String pathName,String url) {
     MinioDto minioDto=new MinioDto();
     minioDto.setFileName(fileName);
-    minioDto.setPathName(pathName);
+    minioDto.setObjectName(pathName);
     minioDto.setUrl(url);
     return minioDto;
   }

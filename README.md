@@ -14,6 +14,11 @@
 
 https://github.com/lihengming/spring-boot-api-project-seed
 
+## 2020年5月8日
+
+新增图片删除功能
+改进文章删除功能，现文章删除功能同时支持删除文章保存的图片
+
 ## 2020年5月7日
 
 完成minio预览图片功能
