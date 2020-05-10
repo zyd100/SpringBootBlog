@@ -8,7 +8,8 @@ public enum CommentEnum {
   private String statusInfo;
   private int statusCode;
 
-  private CommentEnum(int code, String Info) {
+
+ CommentEnum(int code, String Info) {
     setStatusCode(code);
     setStatusInfo(Info);
   }

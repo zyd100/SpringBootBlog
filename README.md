@@ -14,6 +14,10 @@
 
 https://github.com/lihengming/spring-boot-api-project-seed
 
+## 2020年5月10日
+
+新增与评论有关的api支持
+
 ## 2020年5月8日
 
 新增图片删除功能

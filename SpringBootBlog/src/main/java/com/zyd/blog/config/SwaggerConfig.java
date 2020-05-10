@@ -41,6 +41,7 @@ public class SwaggerConfig {
     List<SecurityContext> resultList = new ArrayList<>();
     resultList.add(getContextByPath("/articles/.*"));
     resultList.add(getContextByPath("/minio/.*"));
+    resultList.add(getContextByPath("/comments/.*"));
     return resultList;
   }
 
