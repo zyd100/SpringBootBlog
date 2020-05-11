@@ -3,6 +3,7 @@ package com.zyd.blog.model;
 import java.time.LocalDateTime;
 import javax.persistence.*;
 
+
 public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,8 +22,10 @@ public class Article {
 
     private String watch;
 
+
     @Column(name = "created_time")
     private LocalDateTime createdTime;
+
 
     @Column(name = "update_time")
     private LocalDateTime updateTime;

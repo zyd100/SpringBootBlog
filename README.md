@@ -14,6 +14,12 @@
 
 https://github.com/lihengming/spring-boot-api-project-seed
 
+## 2020年5月11日
+
+新增Redis支持
+
+新增全局date格式配置
+
 ## 2020年5月10日
 
 新增与评论有关的api支持

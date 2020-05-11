@@ -50,5 +50,11 @@ public class ArticleDto {
     this.comments = comments;
     return this;
   }
+  @Override
+  public String toString() {
+    return "ArticleDto [article=" + article + ", comments=" + comments + ", articleCategories="
+        + articleCategories + ", articleType=" + articleType + ", articleTypeCode="
+        + articleTypeCode + "]";
+  }
   
 }
