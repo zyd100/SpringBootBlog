@@ -14,6 +14,11 @@
 
 https://github.com/lihengming/spring-boot-api-project-seed
 
+## 2020年5月12日
+
+对原抽象业务类进行redis整合
+	子业务类增加对redis的支持
+
 ## 2020年5月11日
 
 新增Redis支持
