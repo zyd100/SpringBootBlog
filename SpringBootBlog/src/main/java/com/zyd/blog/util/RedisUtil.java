@@ -1,5 +1,6 @@
 package com.zyd.blog.util;
 
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,18 +34,19 @@ public class RedisUtil {
    * @param values 需要合并的字符串
    * @return
    */
-  public static String generateKey(String...values) {
-    if(values.length<1) {
+  public static String generateKey(String... values) {
+    if (values.length < 1) {
       return "";
     }
     StringBuilder sb = new StringBuilder();
-    for(String str:values) {
+    for (String str : values) {
       sb.append(str);
       sb.append("#");
     }
-    
-    return sb.substring(0, sb.length()-1);
+
+    return sb.substring(0, sb.length() - 1);
   }
+
   /**
    * 指定缓存失效时间
    *
@@ -226,5 +228,21 @@ public class RedisUtil {
    */
   public static Object get(String key) {
     return key == null ? null : redisTemplate.opsForValue().get(key);
+  }
+
+  /**
+   * 
+   * <p>
+   * Title: getKey
+   * </p>
+   * <p>
+   * Description: 获取符合规则的key
+   * </p>
+   * 
+   * @param pattern 前缀+'*'
+   * @return 字符串合集
+   */
+  public static Set<String> getKey(String pattern) {
+    return pattern == null ? null : redisTemplate.keys(pattern);
   }
 }

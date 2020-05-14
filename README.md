@@ -14,6 +14,10 @@
 
 https://github.com/lihengming/spring-boot-api-project-seed
 
+## 2020年5月14日
+
+对业务类的缓存操作进行优化
+
 ## 2020年5月12日
 
 对原抽象业务类进行redis整合
