@@ -42,7 +42,7 @@ public class ArticleController {
   private static final String IMG_URL_PREFIX = "http://localhost:8080/minio/view/";
 
   @PostMapping
-  @PreAuthorize("hasRole('ROLE_ADMIN')")
+  @PreAuthorize("hasRole('ADMIN')")
   public Result<Article> saveArticle(@RequestBody Article article) {
     article.setCreatedTime(LocalDateTime.now());
     article.setSummary(StrUtil.sub(article.getContent(), 0, 100));
@@ -51,7 +51,7 @@ public class ArticleController {
   }
 
   @DeleteMapping("/{id}")
-  @PreAuthorize("hasRole('ROLE_ADMIN')")
+  @PreAuthorize("hasRole('ADMIN')")
   public Result<Object> deleteArticle(@PathVariable("id") Integer id) {
     // 删除文章图片
     for (String path : StrUtil.subBetweenAll(articleService.findById(id).getContent(), "(", ")")) {
@@ -69,7 +69,7 @@ public class ArticleController {
   }
 
   @PutMapping
-  @PreAuthorize("hasRole('ROLE_ADMIN')")
+  @PreAuthorize("hasRole('ADMIN')")
   public Result<Article> updateArticle(@RequestBody Article article) {
     article.setUpdateTime(LocalDateTime.now());
     article.setSummary(StrUtil.sub(article.getContent(), 0, 100));
@@ -91,7 +91,7 @@ public class ArticleController {
     return ResultFactory.generateSuccessResult(articleService.findAllSummary(pageNum, pageSize));
   }
 
-  @PreAuthorize("hasRole('ROLE_ADMIN')")
+  @PreAuthorize("hasRole('ADMIN')")
   @GetMapping("/draft/summary/{pageNum}/{pageSize}")
   public Result<PageInfo<Article>> getDraftSummary(@PathVariable("pageNum") int pageNum,
       @PathVariable("pageSize") int pageSize) {

@@ -1,17 +1,11 @@
 package com.zyd.blog.model;
 
 import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.Collection;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
-public class User implements UserDetails{
-     /** serialVersionUID*/  
-  private static final long serialVersionUID = 1L;
+
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -131,33 +125,4 @@ public class User implements UserDetails{
         return sb.toString();
     }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-      // TODO Auto-generated method stub
-      return Arrays.asList(new SimpleGrantedAuthority(role));
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-      // TODO Auto-generated method stub
-      return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-      // TODO Auto-generated method stub
-      return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-      // TODO Auto-generated method stub
-      return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-      // TODO Auto-generated method stub
-      return true;
-    }
 }

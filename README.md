@@ -14,6 +14,10 @@
 
 https://github.com/lihengming/spring-boot-api-project-seed
 
+## 2020年5月15日
+
+新增分类相关api 减少部分冗余代码
+
 ## 2020年5月14日
 
 对业务类的缓存操作进行优化

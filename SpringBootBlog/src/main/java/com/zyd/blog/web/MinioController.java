@@ -28,13 +28,13 @@ public class MinioController {
   private MinioService minioService;
 
   
-  @PreAuthorize("hasRole('ROLE_ADMIN')")
+  @PreAuthorize("hasRole('ADMIN')")
   @PostMapping("/upload")
   public Result<Object> upload(@RequestParam("file") MultipartFile file) {
     return ResultFactory.generateSuccessResult(minioService.upload(file));
   }
 
-  @PreAuthorize("hasRole('ROLE_ADMIN')")
+  @PreAuthorize("hasRole('ADMIN')")
   @DeleteMapping("/delete")
   public Result<Object> delete(@RequestParam("fileName") String fileName) {
     minioService.delete(fileName);

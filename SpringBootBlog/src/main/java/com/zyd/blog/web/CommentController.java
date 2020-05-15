@@ -22,7 +22,7 @@ public class CommentController {
   private CommentService commentService;
 
   @GetMapping
-  @PreAuthorize("hasRole('ROLE_ADMIN')")
+  @PreAuthorize("hasRole('ADMIN')")
   public Result<Object> getComments(@RequestParam("pageNum") int pageNum,
       @RequestParam("pageSize") int pageSize) {
     return ResultFactory.generateSuccessResult(commentService.findAll(pageNum, pageSize));
@@ -35,7 +35,7 @@ public class CommentController {
   }
 
   @PutMapping("/status")
-  @PreAuthorize("hasRole('ROLE_ADMIN')")
+  @PreAuthorize("hasRole('ADMIN')")
   public Result<Object> updateCommentStatus(@RequestParam("commentId") int commentId,
       @RequestParam("statusCode") int statusCode) {
     Comment comment = new Comment();
@@ -46,7 +46,7 @@ public class CommentController {
   }
 
   @DeleteMapping
-  @PreAuthorize("hasRole('ROLE_ADMIN')")
+  @PreAuthorize("hasRole('ADMIN')")
   public Result<Object> deleteComments(@RequestParam("commentId") int commentId) {
     commentService.deleteById(commentId);
     return ResultFactory.generateSuccessResult(null);
