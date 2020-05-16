@@ -7,4 +7,5 @@ public interface ArticleCategoryService extends Service<ArticleCategory>{
 
   List<ArticleCategory> findByArticleId(Integer id);
   void deleteArticleCategoryByArticleId(Integer id);
+  void deleteByCategoryId(Integer id);
 }

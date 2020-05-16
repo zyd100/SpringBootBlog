@@ -68,6 +68,15 @@ public class ArticleCetagoryServiceImpl extends AbstractService<ArticleCategory>
     redisDelByArticleId(id);
   }
 
+  @Override
+  public void deleteByCategoryId(Integer id) {
+    Example example = new Example(ArticleCategory.class);
+    example.createCriteria().andEqualTo("categoryId", id);
+    articleCategoryMapper.deleteByExample(example);
+    redisDelAllArticle();
+    
+  }
+  
   private void redisDelByArticleId(Integer id) {
     String key=RedisUtil.generateKey(getREDIS_SINGLE_PREFIX_KEY(),REDIS_ARTICLE_PREFIX,id.toString());
     if(RedisUtil.exists(key)) {
@@ -81,4 +90,6 @@ public class ArticleCetagoryServiceImpl extends AbstractService<ArticleCategory>
     String pattern=RedisUtil.generateKey(getREDIS_SINGLE_PREFIX_KEY(),suffix.toString());
     RedisUtil.getKey(pattern).stream().forEach(x->RedisUtil.del(x));
   }
+
+ 
 }

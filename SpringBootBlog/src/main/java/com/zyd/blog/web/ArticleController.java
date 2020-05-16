@@ -1,6 +1,8 @@
 package com.zyd.blog.web;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -12,11 +14,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.github.pagehelper.PageInfo;
+import com.zyd.blog.dto.ArticleCategoryDto;
 import com.zyd.blog.dto.ArticleDto;
 import com.zyd.blog.dto.Result;
 import com.zyd.blog.model.Article;
+import com.zyd.blog.model.ArticleCategory;
 import com.zyd.blog.service.ArticleCategoryService;
 import com.zyd.blog.service.ArticleService;
+import com.zyd.blog.service.CategoryService;
 import com.zyd.blog.service.CommentService;
 import com.zyd.blog.service.MinioService;
 import com.zyd.blog.util.DtoGenerator;
@@ -38,6 +43,8 @@ public class ArticleController {
   private ArticleCategoryService articleCategoryService;
   @Autowired
   private MinioService minioService;
+  @Autowired
+  private CategoryService categoryService;
 
   private static final String IMG_URL_PREFIX = "http://localhost:8080/minio/view/";
 
@@ -60,7 +67,7 @@ public class ArticleController {
         minioService.delete(objectName);
       }
     }
-    
+
     // 删除文章
     articleCategoryService.deleteArticleCategoryByArticleId(id);
     commentService.deleteCommentByArticleId(id);
@@ -80,9 +87,18 @@ public class ArticleController {
   @GetMapping("/{id}")
   public Result<ArticleDto> getArticle(@PathVariable int id) {
 
-    return ResultFactory.generateSuccessResult(DtoGenerator.generateArticleDto(
-        articleService.findById(id), articleCategoryService.findByArticleId(id),
-        commentService.findCommentsByArticleId(id, 1, 5).getList()));
+    List<ArticleCategoryDto> list = new ArrayList<ArticleCategoryDto>();
+
+    List<ArticleCategory> articleCategories = articleCategoryService.findByArticleId(id);
+
+    for (ArticleCategory articleCategory : articleCategories) {
+      list.add(DtoGenerator.generateArticleCategoryDto(articleCategory,
+          categoryService.findById(articleCategory.getCategoryId())));
+    }
+
+    return ResultFactory
+        .generateSuccessResult(DtoGenerator.generateArticleDto(articleService.findById(id), list,
+            commentService.findCommentsByArticleId(id, 1, 5).getList()));
   }
 
   @GetMapping("/summary/{pageNum}/{pageSize}")

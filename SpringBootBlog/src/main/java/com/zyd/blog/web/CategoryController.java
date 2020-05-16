@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.zyd.blog.dto.Result;
 import com.zyd.blog.model.Category;
+import com.zyd.blog.service.ArticleCategoryService;
 import com.zyd.blog.service.CategoryService;
 import com.zyd.blog.util.ResultFactory;
 
@@ -20,6 +21,9 @@ public class CategoryController {
 
   @Autowired
   private CategoryService categoryService;
+  
+  @Autowired
+  private ArticleCategoryService articleCategoryService;
   
   @GetMapping
   public Result<Object>findAll(){
@@ -36,7 +40,7 @@ public class CategoryController {
   @DeleteMapping("/{id}")
   @PreAuthorize("hasRole('ADMIN')")
   public Result<Object>deleteCategory(@PathVariable("id")Integer id){
-    //缺少删除文章分类
+    articleCategoryService.deleteByCategoryId(id);
     categoryService.deleteById(id);
     return ResultFactory.generateSuccessResult(null);
   }
