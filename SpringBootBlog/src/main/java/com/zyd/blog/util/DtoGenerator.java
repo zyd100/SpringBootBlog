@@ -1,5 +1,6 @@
 package com.zyd.blog.util;
 
+import java.util.ArrayList;
 import java.util.List;
 import com.zyd.blog.dto.ArticleCategoryDto;
 import com.zyd.blog.dto.ArticleDto;
@@ -34,5 +35,17 @@ public class DtoGenerator {
     articleCategoryDto.setArticleCategory(articleCategory);
     articleCategoryDto.setCategory(category);
     return articleCategoryDto;
+  }
+  
+  public static List<ArticleCategoryDto>generateArticleCategoryDtoList(List<ArticleCategory>articleCategories,List<Category>categories){
+    List<ArticleCategoryDto> result=new ArrayList<ArticleCategoryDto>();
+    ArticleCategoryDto articleCategoryDto;
+    for(int i=0,length=articleCategories.size();i<length;++i) {
+      articleCategoryDto=new ArticleCategoryDto();
+      articleCategoryDto.setArticleCategory(articleCategories.get(i));
+      articleCategoryDto.setCategory(categories.get(i));
+      result.add(articleCategoryDto);
+    }
+    return result;
   }
 }

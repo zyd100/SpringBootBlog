@@ -43,6 +43,7 @@ public class SwaggerConfig {
     resultList.add(getContextByPath("/minio/.*"));
     resultList.add(getContextByPath("/comments/.*"));
     resultList.add(getContextByPath("/categories/.*"));
+    resultList.add(getContextByPath("/articleCategories/.*"));
     return resultList;
   }
 

@@ -1,6 +1,5 @@
 package com.zyd.blog.web;
 
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,7 +14,6 @@ import com.zyd.blog.dto.Result;
 import com.zyd.blog.model.UserInfo;
 import com.zyd.blog.service.UserInfoService;
 import com.zyd.blog.util.ResultFactory;
-import tk.mybatis.mapper.entity.Condition;
 
 @RestController
 @RequestMapping(path="/userInfos",produces = {"application/json; charset=utf-8"})
@@ -25,10 +23,8 @@ public class UserInfoController {
   
   @GetMapping("/{userId}")
   public Result<Object>getInfo(@PathVariable("userId") String userId){
-    Condition condition=new Condition(UserInfo.class);
-    condition.createCriteria().andEqualTo("userId",userId);
-    List<UserInfo> resultInfos=userInfoService.findByCondition(condition);
-    return ResultFactory.generateSuccessResult(resultInfos.size()>0?resultInfos.get(0):null);
+    
+    return ResultFactory.generateSuccessResult(userInfoService.findInfoByUserId(userId));
   }
 
   @PostMapping
