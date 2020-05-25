@@ -14,6 +14,10 @@
 
 https://github.com/lihengming/spring-boot-api-project-seed
 
+## 2020年5月25日
+
+新增elasticSearch 支持
+
 ## 2020年5月17日
 
 完成有关文章标签api的开发

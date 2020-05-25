@@ -2,210 +2,217 @@ package com.zyd.blog.model;
 
 import java.time.LocalDateTime;
 import javax.persistence.*;
+import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
 
-
+@Document(indexName = "blog", type = "article")
 public class Article {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Integer id;
 
-    private String author;
+  @Field(analyzer = "ik_max_word", type = FieldType.Text)
+  private String author;
 
-    @Column(name = "user_id")
-    private String userId;
+  @Column(name = "user_id")
+  private String userId;
 
-    private String title;
+  @Field(analyzer = "ik_max_word", type = FieldType.Text)
+  private String title;
 
-    private Integer type;
+  private Integer type;
 
-    private String star;
+  private String star;
 
-    private String watch;
-
-
-    @Column(name = "created_time")
-    private LocalDateTime createdTime;
+  private String watch;
 
 
-    @Column(name = "update_time")
-    private LocalDateTime updateTime;
+  @Column(name = "created_time")
+  private LocalDateTime createdTime;
 
-    private String content;
 
-    private String summary;
+  @Column(name = "update_time")
+  private LocalDateTime updateTime;
 
-    /**
-     * @return id
-     */
-    public Integer getId() {
-        return id;
-    }
 
-    /**
-     * @param id
-     */
-    public void setId(Integer id) {
-        this.id = id;
-    }
+  @Field(analyzer = "ik_max_word", type = FieldType.Text)
+  private String content;
 
-    /**
-     * @return author
-     */
-    public String getAuthor() {
-        return author;
-    }
+  private String summary;
 
-    /**
-     * @param author
-     */
-    public void setAuthor(String author) {
-        this.author = author;
-    }
+  /**
+   * @return id
+   */
+  public Integer getId() {
+    return id;
+  }
 
-    /**
-     * @return user_id
-     */
-    public String getUserId() {
-        return userId;
-    }
+  /**
+   * @param id
+   */
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
-    /**
-     * @param userId
-     */
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
+  /**
+   * @return author
+   */
+  public String getAuthor() {
+    return author;
+  }
 
-    /**
-     * @return title
-     */
-    public String getTitle() {
-        return title;
-    }
+  /**
+   * @param author
+   */
+  public void setAuthor(String author) {
+    this.author = author;
+  }
 
-    /**
-     * @param title
-     */
-    public void setTitle(String title) {
-        this.title = title;
-    }
+  /**
+   * @return user_id
+   */
+  public String getUserId() {
+    return userId;
+  }
 
-    /**
-     * @return type
-     */
-    public Integer getType() {
-        return type;
-    }
+  /**
+   * @param userId
+   */
+  public void setUserId(String userId) {
+    this.userId = userId;
+  }
 
-    /**
-     * @param type
-     */
-    public void setType(Integer type) {
-        this.type = type;
-    }
+  /**
+   * @return title
+   */
+  public String getTitle() {
+    return title;
+  }
 
-    /**
-     * @return star
-     */
-    public String getStar() {
-        return star;
-    }
+  /**
+   * @param title
+   */
+  public void setTitle(String title) {
+    this.title = title;
+  }
 
-    /**
-     * @param star
-     */
-    public void setStar(String star) {
-        this.star = star;
-    }
+  /**
+   * @return type
+   */
+  public Integer getType() {
+    return type;
+  }
 
-    /**
-     * @return watch
-     */
-    public String getWatch() {
-        return watch;
-    }
+  /**
+   * @param type
+   */
+  public void setType(Integer type) {
+    this.type = type;
+  }
 
-    /**
-     * @param watch
-     */
-    public void setWatch(String watch) {
-        this.watch = watch;
-    }
+  /**
+   * @return star
+   */
+  public String getStar() {
+    return star;
+  }
 
-    /**
-     * @return created_time
-     */
-    public LocalDateTime getCreatedTime() {
-        return createdTime;
-    }
+  /**
+   * @param star
+   */
+  public void setStar(String star) {
+    this.star = star;
+  }
 
-    /**
-     * @param createdTime
-     */
-    public void setCreatedTime(LocalDateTime createdTime) {
-        this.createdTime = createdTime;
-    }
+  /**
+   * @return watch
+   */
+  public String getWatch() {
+    return watch;
+  }
 
-    /**
-     * @return update_time
-     */
-    public LocalDateTime getUpdateTime() {
-        return updateTime;
-    }
+  /**
+   * @param watch
+   */
+  public void setWatch(String watch) {
+    this.watch = watch;
+  }
 
-    /**
-     * @param updateTime
-     */
-    public void setUpdateTime(LocalDateTime updateTime) {
-        this.updateTime = updateTime;
-    }
+  /**
+   * @return created_time
+   */
+  public LocalDateTime getCreatedTime() {
+    return createdTime;
+  }
 
-    /**
-     * @return content
-     */
-    public String getContent() {
-        return content;
-    }
+  /**
+   * @param createdTime
+   */
+  public void setCreatedTime(LocalDateTime createdTime) {
+    this.createdTime = createdTime;
+  }
 
-    /**
-     * @param content
-     */
-    public void setContent(String content) {
-        this.content = content;
-    }
+  /**
+   * @return update_time
+   */
+  public LocalDateTime getUpdateTime() {
+    return updateTime;
+  }
 
-    /**
-     * @return summary
-     */
-    public String getSummary() {
-        return summary;
-    }
+  /**
+   * @param updateTime
+   */
+  public void setUpdateTime(LocalDateTime updateTime) {
+    this.updateTime = updateTime;
+  }
 
-    /**
-     * @param summary
-     */
-    public void setSummary(String summary) {
-        this.summary = summary;
-    }
+  /**
+   * @return content
+   */
+  public String getContent() {
+    return content;
+  }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", author=").append(author);
-        sb.append(", userId=").append(userId);
-        sb.append(", title=").append(title);
-        sb.append(", type=").append(type);
-        sb.append(", star=").append(star);
-        sb.append(", watch=").append(watch);
-        sb.append(", createdTime=").append(createdTime);
-        sb.append(", updateTime=").append(updateTime);
-        sb.append(", content=").append(content);
-        sb.append(", summary=").append(summary);
-        sb.append("]");
-        return sb.toString();
-    }
+  /**
+   * @param content
+   */
+  public void setContent(String content) {
+    this.content = content;
+  }
+
+  /**
+   * @return summary
+   */
+  public String getSummary() {
+    return summary;
+  }
+
+  /**
+   * @param summary
+   */
+  public void setSummary(String summary) {
+    this.summary = summary;
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append(getClass().getSimpleName());
+    sb.append(" [");
+    sb.append("Hash = ").append(hashCode());
+    sb.append(", id=").append(id);
+    sb.append(", author=").append(author);
+    sb.append(", userId=").append(userId);
+    sb.append(", title=").append(title);
+    sb.append(", type=").append(type);
+    sb.append(", star=").append(star);
+    sb.append(", watch=").append(watch);
+    sb.append(", createdTime=").append(createdTime);
+    sb.append(", updateTime=").append(updateTime);
+    sb.append(", content=").append(content);
+    sb.append(", summary=").append(summary);
+    sb.append("]");
+    return sb.toString();
+  }
 }

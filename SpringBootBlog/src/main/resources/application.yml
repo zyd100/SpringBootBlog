@@ -1,4 +1,14 @@
 spring:
+  redis:
+    # Redis数据库索引（默认为0）
+   database: 0
+    # Redis服务器地址
+   host: localhost
+    # Redis服务器连接端口
+   port: 6379
+   timeout: 300   jedis:      pool:        max-idle: 8
+        max-active: 8
+        max-wait: -1     
   #Druid
   datasource:
    type: com.alibaba.druid.pool.DruidDataSource 
@@ -12,13 +22,22 @@ spring:
       max-active: 100
       time-between-eviction-runs-millis: 60000
       max-wait: 60000
-   #pagehelper     data:    mongodb:      host: localhost
+   #pagehelper     data:
+    mongodb:
+      host: localhost
       port: 27017
       database: springbootblog
-  #date format    
+    elasticsearch:
+      repositories:
+        enabled: true
+   
+  
+          
+#date format    
   jackson:    date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8  
-  #文件上传      servlet:    multipart:      enabled: true
+  #文件上传  
+      servlet:    multipart:      enabled: true
       max-file-size: 10MB #限制单文件最大大小
 pagehelper:
   helper-dialect: mysql
