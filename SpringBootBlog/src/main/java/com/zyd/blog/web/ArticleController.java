@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.github.pagehelper.PageInfo;
 import com.zyd.blog.dto.ArticleCategoryDto;
@@ -23,6 +26,7 @@ import com.zyd.blog.service.ArticleCategoryService;
 import com.zyd.blog.service.ArticleService;
 import com.zyd.blog.service.CategoryService;
 import com.zyd.blog.service.CommentService;
+import com.zyd.blog.service.ElArticleService;
 import com.zyd.blog.service.MinioService;
 import com.zyd.blog.util.DtoGenerator;
 import com.zyd.blog.util.ResultFactory;
@@ -45,7 +49,8 @@ public class ArticleController {
   private MinioService minioService;
   @Autowired
   private CategoryService categoryService;
-
+  @Autowired
+  private ElArticleService elArticleService;
   private static final String IMG_URL_PREFIX = "http://localhost:8080/minio/view/";
 
   @PostMapping
@@ -115,4 +120,9 @@ public class ArticleController {
         .generateSuccessResult(articleService.findDraftAllSummary(pageNum, pageSize));
   }
 
+  @GetMapping("/search/{key}")
+  public Result<Object> searchArticle(@PathVariable("key")String key,@RequestParam("pageNum") Integer pageNum,@RequestParam("pageSize") Integer pageSize){
+   Pageable pageable=PageRequest.of(pageNum, pageSize);
+    return ResultFactory.generateSuccessResult(elArticleService.searchArticles(key, pageable));
+  }
 }
